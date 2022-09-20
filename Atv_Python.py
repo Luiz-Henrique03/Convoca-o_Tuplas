@@ -1,5 +1,5 @@
 from imaplib import Time2Internaldate
-
+import os
 
 jogador = []
 posição = []
@@ -8,12 +8,14 @@ Time =[]
 Time_Titular = []
 
 
+
 def criar():
     i = 0
     jogador.clear()
     posição.clear()
     nota.clear()
     Time.clear()
+    file = open("hexa.txt",'w')
     Elenco = ()
     for i in range(23):
         if (i < 3):
@@ -54,23 +56,33 @@ def criar():
                 nota.insert(i, int(input("Digite a nota do atacante: ")))
         Elenco = (jogador[i],posição[i],nota[i])
         Time.append(Elenco)
+        TimeStr = "".join(str(Time))
+        TimeStr.split("\n")
+    file.write(TimeStr)
+    file.close()
             
 def Atualiza():
     Nome_Atualizar = input("Digite o nome a ser alterado: ")
     Posicao_Atualizar = input("Digite a posição do jogador a ser alterado: ")
-    
+    file = open("hexa.txt",'r')
+
     i = 0
-    for i in range(len(Time)):
-        if Nome_Atualizar == Time[i][0] and Posicao_Atualizar == Time[i][1]:
+    for i in file.readline():
+        if Nome_Atualizar == file.readline() and Posicao_Atualizar == file.readline():
             del Time[i]
-            
+            os.remove("hexa.txt")
+            file.close()
+            file = open("hexa.txt",'w')
             jogador.insert(i,input("Nome Do novo Jogador; "))
             posição.insert(i,input("Posição do novo Jogador: "))
             nota.insert(i,int(input("Nota do novo jogador: ")))
             Elenco_Aux = (jogador[i],posição[i],nota[i])
             Time.append(Elenco_Aux)
+            TimeStr = "".join(str(Time))
             break
-  
+    file.write(TimeStr)
+    file.close()
+
             
 def Excluir():
     Nome_Excluir= input("Digite o nome a ser Excluido: ")
@@ -179,9 +191,8 @@ while op != 6:
     op = int(input("Escolha uma opção: "))
 
     if op == 1:
-            criar()
-
-
+        criar()
+        
     if op == 2:
             Atualiza()
 
