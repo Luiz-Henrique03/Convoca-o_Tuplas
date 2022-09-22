@@ -62,24 +62,27 @@ def criar():
 def Atualiza():
     Nome_Atualizar = input("Digite o nome a ser alterado: ")
     Posicao_Atualizar = input("Digite a posição do jogador a ser alterado: ")
-    file = open("hexa.txt",'a')
+
 
     i = 0
     for i in range(len(jogador)):
         if Nome_Atualizar == Time[i][0] and Posicao_Atualizar == Time[i][1]:
             del Time[i]
-            file.
             jogador.insert(i,input("Nome Do novo Jogador; "))
             posição.insert(i,input("Posição do novo Jogador: "))
             nota.insert(i,int(input("Nota do novo jogador: ")))
             Elenco_Aux = (jogador[i],posição[i],nota[i])
-            file.write(str(Elenco_Aux)+"\n")
             Time.append(Elenco_Aux)
+            os.remove("hexa.txt")
             TimeStr = "".join(str(Time))
             break
-    file.close()
-   # file.write("\n"+TimeStr)
-   # file.close()
+
+    fileWrite = open("hexa.txt",'w')
+    for i in range(len(Time)):
+        Elenco = (Time[i][0],Time[i][1],Time[i][0])
+        fileWrite.write(str(Elenco)+"\n")
+    
+    fileWrite.close()
 
             
 def Excluir():
@@ -208,5 +211,3 @@ while op != 6:
 
     if op == 5:
             MontaTimeTitular()
-
-
