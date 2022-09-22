@@ -78,7 +78,7 @@ def Atualiza():
 
     fileWrite = open("hexa.txt",'w')
     for i in range(len(Time)):
-        Elenco = (Time[i][0],Time[i][1],Time[i][0])
+        Elenco = (Time[i][0],Time[i][1],Time[i][2])
         fileWrite.write(str(Elenco)+"\n")
     
     fileWrite.close()
@@ -99,7 +99,7 @@ def Excluir():
         
     fileWrite = open("hexa.txt",'w')
     for i in range(len(Time)):
-        Elenco = (Time[i][0],Time[i][1],Time[i][0])
+        Elenco = (Time[i][0],Time[i][1],Time[i][2])
         fileWrite.write(str(Elenco)+"\n")
     
     fileWrite.close()
