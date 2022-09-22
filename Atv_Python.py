@@ -74,7 +74,6 @@ def Atualiza():
             Elenco_Aux = (jogador[i],posição[i],nota[i])
             Time.append(Elenco_Aux)
             os.remove("hexa.txt")
-            TimeStr = "".join(str(Time))
             break
 
     fileWrite = open("hexa.txt",'w')
@@ -93,12 +92,19 @@ def Excluir():
     for i in range(len(jogador)):
         if Nome_Excluir == Time[i][0] and Posicao_Excluir == Time[i][1]:
             del Time[i]
+            os.remove("hexa.txt")
             break
         elif i == len(jogador):
             print("Dados não conferem")
+        
+    fileWrite = open("hexa.txt",'w')
+    for i in range(len(Time)):
+        Elenco = (Time[i][0],Time[i][1],Time[i][0])
+        fileWrite.write(str(Elenco)+"\n")
+    
+    fileWrite.close()
 
 def MontaTimeTitular():
-    maior_nota = [0]
     j = 0
 
     Goleiro_Notas = []
