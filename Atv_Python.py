@@ -55,33 +55,31 @@ def criar():
                 print("Nota invalida, digite novamente")
                 nota.insert(i, int(input("Digite a nota do atacante: ")))
         Elenco = (jogador[i],posição[i],nota[i])
+        file.write(str(Elenco)+"\n")
         Time.append(Elenco)
-        TimeStr = "".join(str(Time))
-        TimeStr.split("\n")
-    file.write(TimeStr)
     file.close()
             
 def Atualiza():
     Nome_Atualizar = input("Digite o nome a ser alterado: ")
     Posicao_Atualizar = input("Digite a posição do jogador a ser alterado: ")
-    file = open("hexa.txt",'r')
+    file = open("hexa.txt",'a')
 
     i = 0
-    for i in file.readline():
-        if Nome_Atualizar == file.readline() and Posicao_Atualizar == file.readline():
+    for i in range(len(jogador)):
+        if Nome_Atualizar == Time[i][0] and Posicao_Atualizar == Time[i][1]:
             del Time[i]
-            os.remove("hexa.txt")
-            file.close()
-            file = open("hexa.txt",'w')
+            file.
             jogador.insert(i,input("Nome Do novo Jogador; "))
             posição.insert(i,input("Posição do novo Jogador: "))
             nota.insert(i,int(input("Nota do novo jogador: ")))
             Elenco_Aux = (jogador[i],posição[i],nota[i])
+            file.write(str(Elenco_Aux)+"\n")
             Time.append(Elenco_Aux)
             TimeStr = "".join(str(Time))
             break
-    file.write(TimeStr)
     file.close()
+   # file.write("\n"+TimeStr)
+   # file.close()
 
             
 def Excluir():
