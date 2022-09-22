@@ -1,10 +1,11 @@
 from imaplib import Time2Internaldate
 import os
+import csv
 
 jogador = []
 posição = []
 nota = []
-Time =[]
+Time = []
 Time_Titular = []
 
 
@@ -85,7 +86,7 @@ def Atualiza():
 
             
 def Excluir():
-    Nome_Excluir= input("Digite o nome a ser Excluido: ")
+    Nome_Excluir = input("Digite o nome a ser Excluido: ")
     Posicao_Excluir = input("Digite a posição do jogador a ser excluido: ")
     
     i = 0
@@ -108,7 +109,7 @@ def MontaTimeTitular():
     j = 0
 
     Goleiro_Notas = []
-    for j in range(3, 7):
+    for j in range(0, 3):
         Goleiro_Notas.append(Time[j][2])
     Goleiro_Notas.sort(reverse=True)
 
@@ -176,7 +177,9 @@ def MontaTimeTitular():
                     Time_Titular.append(Time[i][0])
                 elif Atacantes_Notas[2] == Time[i][2]:
                     Time_Titular.append(Time[i][0])
-    print(Time_Titular)
+    """ fileCSV = open("hexa.csv",'w')                
+    writer = csv.writer(fileCSV)
+    writer.writerows(Time_Titular)"""
 
 
 def Lista_Convocados():
@@ -186,7 +189,6 @@ def Lista_Convocados():
 
 
 op = 0
-Convocou = 0
 
 while op != 6:
     print("1 - Fazer a convocação")
