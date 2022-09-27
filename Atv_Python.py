@@ -63,17 +63,19 @@ def criar():
 def Atualiza():
     Nome_Atualizar = input("Digite o nome a ser alterado: ")
     Posicao_Atualizar = input("Digite a posição do jogador a ser alterado: ")
-
-
+    file = open("hexa.txt",'r')
+ 
+    
     i = 0
     for i in range(len(jogador)):
-        if Nome_Atualizar == Time[i][0] and Posicao_Atualizar == Time[i][1]:
+        if Nome_Atualizar in file.read() or Posicao_Atualizar in file.read():
             del Time[i]
             jogador.insert(i,input("Nome Do novo Jogador; "))
             posição.insert(i,input("Posição do novo Jogador: "))
             nota.insert(i,int(input("Nota do novo jogador: ")))
             Elenco_Aux = (jogador[i],posição[i],nota[i])
             Time.append(Elenco_Aux)
+            file.close()
             os.remove("hexa.txt")
             break
 
