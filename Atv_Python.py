@@ -1,5 +1,6 @@
 from imaplib import Time2Internaldate
 import os
+import PySimpleGUI as sg
 import csv
 
 jogador = []
@@ -20,59 +21,183 @@ def criar():
     Elenco = ()
     for i in range(23):
         if (i < 3):
-            jogador.insert(i, input("Digite o nome do goleiro: "))
-            posição.insert(i, "Goleiro")
-            nota.insert(i, int(input("Digite a nota: ")))
-            while nota[i] < 0 or nota[i] > 10:
+            layout = [
+                [sg.Text('Digite a note do goleiro')],
+                [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
+                [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
+                [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
+            ]
 
+            janela = sg.Window('Bem -vindo a convocação da seleção brasileira', layout, element_justification='center')
+
+            evento, dados = janela.read()
+            nome = dados['nome']
+            notas = dados['nota']
+            jogador.insert(i,nome)
+            nota.insert(i,int(notas))
+            posição.insert(i, "Goleiro")
+            janela.close()
+            while nota[i] < 0 or nota[i] > 10:
                   print("Nota invalida, digite novamente")
                   nota.insert(i, int(input("Digite a nota do goleiro: ")))
         elif (i >= 3 and i < 7):
-            jogador.insert(i, input("Digite o nome do lateral: "))
+            layout = [
+                [sg.Text('Digite a note do lateral')],
+                [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
+                [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
+                [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
+            ]
+
+            janela = sg.Window('Bem -vindo a convocação da seleção brasileira', layout, element_justification='center')
+
+            evento, dados = janela.read()
+            nome = dados['nome']
+            notas = dados['nota']
+            jogador.insert(i, nome)
+            nota.insert(i, int(notas))
             posição.insert(i, "Lateral")
-            nota.insert(i, int(input("Digite a nota: ")))
+            janela.close()
             while nota[i] < 0 or nota[i] > 10:
                 print("Nota invalida, digite novamente")
-                nota.insert(i, int(input("Digite a nota: ")))
+                nota.insert(i, int(input("Digite a nota do Lateral: ")))
+
         elif (i >= 7 and i < 11):
-            jogador.insert(i, input("Digite o nome do Zagueiro: "))
-            posição.insert(i, "Zagueiro")
-            nota.insert(i, int(input("Digite a nota: ")))
+            layout = [
+                [sg.Text('Digite a note do zagueiro')],
+                [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
+                [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
+                [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
+            ]
+
+            janela = sg.Window('Bem -vindo a convocação da seleção brasileira', layout, element_justification='center')
+
+            evento, dados = janela.read()
+            nome = dados['nome']
+            notas = dados['nota']
+            jogador.insert(i, nome)
+            nota.insert(i, int(notas))
+            posição.insert(i, "Lateral")
+            janela.close()
             while nota[i] < 0 or nota[i] > 10:
-                print("Nota invalida, digite novamente")
-                nota.insert(i, int(input("Digite a nota do Zagueiro: ")))
+                layout = [
+                    [sg.Text('Digite a nota novamente')],
+                    [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
+                    [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
+                ]
+
+                janela = sg.Window('Nota invalida!', layout, element_justification='center')
+
+
+                notas = dados['nota']
+                jogador.insert(i, nome)
+                nota.insert(i, int(notas))
+                janela.close()
         elif (i >= 11 and i < 17):
-            jogador.insert(i,input("Digite o nome do Meio_Campista: "))
-            posição.insert(i, "Meio-campista")
-            nota.insert(i, int(input("Digite a nota: ")))
+            layout = [
+                [sg.Text('Digite a note do meio-campista')],
+                [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
+                [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
+                [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
+            ]
+
+            janela = sg.Window('Bem -vindo a convocação da seleção brasileira', layout, element_justification='center')
+
+            evento, dados = janela.read()
+            nome = dados['nome']
+            notas = dados['nota']
+            jogador.insert(i, nome)
+            nota.insert(i, int(notas))
+            posição.insert(i, "Meio-Campista")
+            janela.close()
+
             while nota[i] < 0 or nota[i] > 10:
-                print("Nota invalida, digite novamente")
-                nota.insert(i, int(input("Digite a nota do meia: ")))
+                layout = [
+                    [sg.Text('Digite a nota novamente')],
+                    [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
+                    [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
+                ]
+
+                janela = sg.Window('Nota invalida!', layout, element_justification='center')
+
+                notas = dados['nota']
+                jogador.insert(i, nome)
+                nota.insert(i, int(notas))
+                janela.close()
         elif (i >= 17 and i < 23):
-            jogador.insert(i,input("Digite o nome do Atacante: "))
+            layout = [
+                [sg.Text('Digite a note do Atacante')],
+                [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
+                [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
+                [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
+            ]
+
+            janela = sg.Window('Bem -vindo a convocação da seleção brasileira', layout, element_justification='center')
+
+            evento, dados = janela.read()
+            nome = dados['nome']
+            notas = dados['nota']
+            jogador.insert(i, nome)
+            nota.insert(i, int(notas))
             posição.insert(i, "Atacante")
-            nota.insert(i, int(input("Digite a nota: ")))
+            janela.close()
             while nota[i] < 0 or nota[i] > 10:
-                print("Nota invalida, digite novamente")
-                nota.insert(i, int(input("Digite a nota do atacante: ")))
+                layout = [
+                    [sg.Text('Digite a nota novamente')],
+                    [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
+                    [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
+                ]
+
+                janela = sg.Window('Nota invalida!', layout, element_justification='center')
+
+                notas = dados['nota']
+                jogador.insert(i, nome)
+                nota.insert(i, int(notas))
+                janela.close()
+
         Elenco = (jogador[i],posição[i],nota[i])
         file.write(str(Elenco)+"\n")
         Time.append(Elenco)
     file.close()
             
 def Atualiza():
-    Nome_Atualizar = input("Digite o nome a ser alterado: ")
-    Posicao_Atualizar = input("Digite a posição do jogador a ser alterado: ")
+    layout = [
+        [sg.Text('Digite o nome e a posição do jogador a ser atualizado')],
+        [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
+        [sg.Text('Posição: ', size=(10, 1)), sg.Input(key='posição')],
+        [sg.Button('Entrar: ', button_color='green')],
+    ]
+
+    janela = sg.Window('Bem -vindo a convocação da seleção brasileira', layout, element_justification='center')
+
+    evento, dados = janela.read()
+    nome_Atualiza = dados['nome']
+    posição_Atualiza = dados['posição']
+    janela.close()
     file = open("hexa.txt",'r')
  
     
     i = 0
-    for i in range(len(jogador)):
-        if Nome_Atualizar in file.read() or Posicao_Atualizar in file.read():
+    for i in range(len(Time)):
+        if nome_Atualiza == Time[i][0] and posição_Atualiza == Time[i][1]:
             del Time[i]
-            jogador.insert(i,input("Nome Do novo Jogador; "))
-            posição.insert(i,input("Posição do novo Jogador: "))
-            nota.insert(i,int(input("Nota do novo jogador: ")))
+            layout = [
+                [sg.Text('Digite a note do Atacante')],
+                [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
+                [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
+                [sg.Text('Posição: ', size=(10, 1)), sg.Input(key='posição')],
+                [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
+            ]
+
+            janela = sg.Window('Bem -vindo a convocação da seleção brasileira', layout, element_justification='center')
+
+            evento, dados = janela.read()
+            novo_nome = dados['nome']
+            novo_notas = dados['nota']
+            novo_posição = dados['posição']
+            jogador.insert(i, novo_nome)
+            nota.insert(i, int(novo_notas))
+            posição.insert(i, novo_posição)
+            janela.close()
             Elenco_Aux = (jogador[i],posição[i],nota[i])
             Time.append(Elenco_Aux)
             file.close()
@@ -88,13 +213,26 @@ def Atualiza():
 
             
 def Excluir():
-    Nome_Excluir = input("Digite o nome a ser Excluido: ")
-    Posicao_Excluir = input("Digite a posição do jogador a ser excluido: ")
-    
+    layout = [
+        [sg.Text('Digite o nome e a posição do jogador a ser excluido')],
+        [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
+        [sg.Text('Posição: ', size=(10, 1)), sg.Input(key='posição')],
+        [sg.Button('Entrar: ', button_color='green')],
+    ]
+
+    janela = sg.Window('Bem -vindo a convocação da seleção brasileira', layout, element_justification='center')
+
+    evento, dados = janela.read()
+    nome_excluir = dados['nome']
+    posição_excluir = dados['posição']
+    janela.close()
     i = 0
-    for i in range(len(jogador)):
-        if Nome_Excluir == Time[i][0] and Posicao_Excluir == Time[i][1]:
+    file = open("hexa.txt",'r')
+
+    for i in range(len(Time)):
+        if nome_excluir == Time[i][0] and posição_excluir == Time[i][1]:
             del Time[i]
+            file.close()
             os.remove("hexa.txt")
             break
         elif i == len(jogador):
@@ -179,45 +317,53 @@ def MontaTimeTitular():
                     Time_Titular.append(Time[i][0])
                 elif Atacantes_Notas[2] == Time[i][2]:
                     Time_Titular.append(Time[i][0])
-    """ fileCSV = open("hexa.csv",'w')                
-    writer = csv.writer(fileCSV)
-    writer.writerows(Time_Titular)"""
-
+    layout = [
+        [sg.Listbox(values=Time_Titular, size=(30, 6), key='esc')],
+        [sg.Button('OK')]
+    ]
+    janela = sg.Window('esc', layout)
+    evento, dados = janela.read()
+    janela.close()
 
 def Lista_Convocados():
-    i = 0
-    for i in range(len(Time)):
-        print(Time[i][0]+ " " +Time[i][1])
+    layout = [
+        [sg.Listbox(values=Time, size=(30, 6), key='esc')],
+        [sg.Button('OK')]
+    ]
+    janela = sg.Window('esc', layout)
+    evento, dados = janela.read()
+    janela.close()
 
 
-op = 0
+escolha = ''
+while escolha != '6-sair':
 
-while op != 6:
-    print("1 - Fazer a convocação")
-    print("2 - Aterar Jogador")
-    print("3 - Excluir jogador")
-    print("4 - Exibir Jogadores Convocados")
-    print("5 - Exibir time Titular")
-    print("6 - Sair")
-    op = int(input("Escolha uma opção: "))
+    opções = ['1 - Fazer Convocação', '2 - Alterar jogador', '3 - Excluir jogador', '4 - Listar jogador', '5 - Time titular','6-sair']
 
-    if op == 1:
-        criar()
-        
-    if op == 2:
-            Atualiza()
+    layout = [
+        [sg.Listbox(values=opções, size=(30, 6), key='esc')],
+        [sg.Button('OK')]
+    ]
+    janela = sg.Window('Menu principal', layout)
+    evento, dados = janela.read()
 
+    if len(dados) > 0:
+        escolha = dados['esc'][0]
+    janela.close()
 
 
-    if op == 3:
-            Excluir()
+    if escolha == '1 - Fazer Convocação':
+          criar()
 
+    if escolha == '2 - Alterar jogador':
+          Atualiza()
 
+    if escolha == '3 - Excluir jogador':
+          Excluir()
 
-    if op == 4:
+    if escolha == '4 - Listar jogador':
         Lista_Convocados()
 
-
-
-    if op == 5:
+    if escolha == '5 - Time titular':
             MontaTimeTitular()
+
