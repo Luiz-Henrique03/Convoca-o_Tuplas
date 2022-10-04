@@ -22,7 +22,7 @@ def criar():
     for i in range(23):
         if (i < 3):
             layout = [
-                [sg.Text('Digite a note do goleiro')],
+                [sg.Text('Digite o nome e a nota do goleiro')],
                 [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
                 [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
                 [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
@@ -42,7 +42,7 @@ def criar():
                   nota.insert(i, int(input("Digite a nota do goleiro: ")))
         elif (i >= 3 and i < 7):
             layout = [
-                [sg.Text('Digite a note do lateral')],
+                [sg.Text('Digite o nome e a nota do lateral')],
                 [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
                 [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
                 [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
@@ -63,7 +63,7 @@ def criar():
 
         elif (i >= 7 and i < 11):
             layout = [
-                [sg.Text('Digite a note do zagueiro')],
+                [sg.Text('Digite o nome e a nota do zagueiro')],
                 [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
                 [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
                 [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
@@ -94,7 +94,7 @@ def criar():
                 janela.close()
         elif (i >= 11 and i < 17):
             layout = [
-                [sg.Text('Digite a note do meio-campista')],
+                [sg.Text('Digite o nome e a nota do meio-campista')],
                 [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
                 [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
                 [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
@@ -125,7 +125,7 @@ def criar():
                 janela.close()
         elif (i >= 17 and i < 23):
             layout = [
-                [sg.Text('Digite a note do Atacante')],
+                [sg.Text('Digite o nome e a nota do Atacante')],
                 [sg.Text('Nome: ', size=(10, 1)), sg.Input(key='nome')],
                 [sg.Text('Nota: ', size=(10, 1)), sg.Input(key='nota')],
                 [sg.Button('Entrar: ', button_color='green'), sg.Button('Cancelar', button_color='red')],
@@ -309,7 +309,7 @@ def MontaTimeTitular():
                 elif Meia_Notas[2] == Time[i][2]:
                     Time_Titular.append(Time[i][0])
 
-        if (i >= 17 and i < 23):
+        if (i >= 17 and i < 24):
             if len(Time_Titular) < 11:
                 if Atacantes_Notas[0] == Time[i][2]:
                     Time_Titular.append(Time[i][0])
